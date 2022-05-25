@@ -1,0 +1,57 @@
+swagger: '2.0'
+info:
+  description: COTOHA API ドキュメント
+  version: 0.0.1
+  title: COTOHA REST APIs
+host: localhost:8080
+basePath: /api
+tags:
+  - name: cotoha
+    description: COTOHA API
+schemes:
+  - http
+  - https
+paths:
+  /sentiment:
+    post:
+      tags:
+        - cotoha
+      summary: Sentiment Analysys
+      description: Sentiment Analysys
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/TextRequest'
+      responses:
+        '200':
+          description: 成功
+        '400':
+          description: エラー
+  /user_attribute:
+    post:
+      tags:
+        - cotoha
+      summary: User Attribute Analysys
+      description: User Attribute Analysys
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/TextRequest'
+      responses:
+        '200':
+          description: 成功
+        '400':
+          description: エラー
+definitions:
+  TextRequest:
+    type: object
+    properties:
+      text:
+        type: string
+        description: 日本語テキスト
